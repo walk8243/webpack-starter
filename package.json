@@ -2,10 +2,11 @@
   "name": "webpack-starter",
   "description": "webpackを始めるスターター",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node .",
     "start:debug": "webpack-dev-server --progress --config webpack.dev.js",
-    "start:production": "yarn run deploy && node server.js",
+    "start:production": "yarn run deploy && yarn run start",
     "deploy": "webpack --config webpack.prod.js"
   },
   "repository": "git@github.com:walk8243/birthday-message-page.git",
