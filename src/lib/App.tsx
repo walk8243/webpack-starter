@@ -16,7 +16,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
 	render() {
 		return (
-			<React.Fragment>
+			<>
 				<header>
 					<Header visible={this.props.header} root={this} title={this.props.main.BASE_PAGE_TITLE} />
 				</header>
@@ -28,7 +28,7 @@ export default class App extends React.Component<AppProps, AppState> {
 						<Footer visible={this.props.footer} root={this} />
 					</footer>
 				</div>
-			</React.Fragment>
+			</>
 		);
 	}
 

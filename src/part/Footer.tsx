@@ -14,9 +14,9 @@ export default class Footer extends React.Component<FooterProps> {
 
 	render() {
 		return this.props.visible ? (
-			<React.Fragment>
+			<>
 				<p>© 2020 walk8243.</p>
-			</React.Fragment>
+			</>
 		) : (
 			<React.Fragment />
 		);
