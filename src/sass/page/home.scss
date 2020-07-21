@@ -1,0 +1,6 @@
+@use "../common/color";
+@use "../common/theme";
+
+body {
+	background-color: theme.prop-value(theme.$grey-50);
+}

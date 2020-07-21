@@ -1,0 +1,5 @@
+@use "color";
+@forward "@material/theme" with (
+	$primary: color.$my-primary-600 !default,
+	$secondary: color.$my-secondary-300 !default,
+);

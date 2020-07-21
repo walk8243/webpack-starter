@@ -1,0 +1,23 @@
+@use "@material/card";
+
+$card-padding: 16px;
+.mdc-card {
+	@include card.core-styles;
+	height: 90vh;
+	width: 90vw;
+	margin: 5vh auto;
+	color: #000000;
+	@include card.fill-color(#FFFFFF);
+	z-index: 4;
+	@include card.shape-radius(5px, false);
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08), 0 0 15px 0 rgba(0, 0, 0, 0.02), 0 0 20px 4px rgba(0, 0, 0, 0.06);
+	.mdc-card__primary-action {
+		height: 100%;
+	}
+	.mdc-card__media--square {
+		height: 100%;
+	}
+	.mdc-card__media-content {
+		padding: $card-padding;
+	}
+}

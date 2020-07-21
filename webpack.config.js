@@ -3,14 +3,15 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const baseDir = path.resolve(__dirname);
+const srcDir = path.join(baseDir, './src');
 const targetExtensions = [ '.ts', '.tsx', '.js', '.jsx' ];
 const targetExtensionRegExp = new RegExp(`\.(${targetExtensions.map((e) => e.slice(1)).join('|')})$`);
 
-const pages = getPages(path.resolve(baseDir, './src/page')).reduce((previous, current) => { return { ...previous, [current.entrypoint]: current.filepath }; }, {});
+const pages = getPages(path.join(srcDir, './page')).reduce((previous, current) => { return { ...previous, [current.entrypoint]: current.filepath }; }, {});
 
 module.exports = setting = {
 	entry: {
-		'_index': path.resolve(baseDir, './src/index.tsx'),
+		'_index': path.join(srcDir, './index.tsx'),
 		...pages,
 	},
 	output: {
@@ -53,10 +54,10 @@ module.exports = setting = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(baseDir, './src/index.html'),
+			template: path.join(srcDir, './index.html'),
 			chunks: []
 		}),
-		new FaviconsWebpackPlugin('./src/img/favicon.svg'),
+		new FaviconsWebpackPlugin(path.join(srcDir, './img/favicon.svg')),
 	],
 };
 

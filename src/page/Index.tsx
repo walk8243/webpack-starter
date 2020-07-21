@@ -1,7 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import Common from '../lib/CommonComponent';
 
-export default class Index extends React.Component {
+import '../sass/page/home.scss';
+
+export default class Index extends Common {
 	render() {
 		return (
 			<div className="page home">
@@ -11,4 +13,4 @@ export default class Index extends React.Component {
 	}
 }
 
-render(<Index />, document.getElementById('root'));
+Index.renderApp();
