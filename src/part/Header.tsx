@@ -11,6 +11,7 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 	static readonly defaultProps = {
 		visible: true,
 		topbarClass: 'mdc-top-app-bar',
+		title: '',
 	};
 
 	constructor(props: HeaderProps) {
@@ -35,7 +36,7 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 							>
 							menu
 						</button>
-						<span className="mdc-top-app-bar__title">Birthday Message Page</span>
+						<span className="mdc-top-app-bar__title">{this.props.title}</span>
 					</section>
 				</div>
 				{this.renderMenu()}
@@ -85,6 +86,7 @@ export type HeaderProps = {
 	visible: boolean,
 	root: App,
 	topbarClass?: string,
+	title?: string,
 };
 
 export type HeaderState = {

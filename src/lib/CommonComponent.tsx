@@ -2,7 +2,7 @@ import React from 'react';
 import App from './App';
 
 export default class CommonComponent<P extends CommonComponentProps = CommonComponentProps> extends React.Component<P> {
-	static readonly BASE_PAGE_TITLE = 'Birthday Message Page';
+	static readonly BASE_PAGE_TITLE: string = 'Birthday Message Page';
 	static readonly isFrame?: isFrameVisible;
 
 	constructor(props: P) {

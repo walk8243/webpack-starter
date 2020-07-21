@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Common from '../lib/CommonComponent';
+import Common from './CommonComponent';
 import Header from '../part/Header';
 import Footer from '../part/Footer';
 
@@ -18,7 +18,7 @@ export default class App extends React.Component<AppProps, AppState> {
 		return (
 			<React.Fragment>
 				<header>
-					<Header visible={this.props.header} root={this} />
+					<Header visible={this.props.header} root={this} title={this.props.main.BASE_PAGE_TITLE} />
 				</header>
 				<div id="main" className="container" style={{ paddingTop: this.state.headerHeight }}>
 					<main>
