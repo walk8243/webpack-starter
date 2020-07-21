@@ -1,3 +1,39 @@
-h1 {
-	font-size: 3em;
+@use "./common/theme";
+
+body {
+	margin: 0;
+	* {
+		box-sizing: border-box;
+	}
+}
+
+#root {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.page {
+	padding: 8px;
+}
+
+.elemental {
+	display: inline-block;
+	&.reverse {
+		transform: scaleX(-1);
+	}
+	&.small {
+		font-size: 0.9em;
+	}
+}
+
+.back-fill {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -100;
 }
