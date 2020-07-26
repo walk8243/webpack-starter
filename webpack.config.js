@@ -11,7 +11,7 @@ const pages = getPages(path.join(srcDir, './page')).reduce((previous, current) =
 
 module.exports = setting = {
 	entry: {
-		'_index': path.join(srcDir, './index.tsx'),
+		'bundle': path.join(srcDir, './index.tsx'),
 		...pages,
 	},
 	output: {
