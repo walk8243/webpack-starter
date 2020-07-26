@@ -10,24 +10,22 @@ export default class App extends React.Component<AppProps, AppState> {
 	constructor(props: AppProps) {
 		super(props);
 		this.state = {
+			windowHeight: 0,
 			headerHeight: 0,
+			footerHeight: 0,
 		};
 	}
 
 	render() {
 		return (
 			<>
-				<header>
-					<Header visible={this.props.header} root={this} title={this.props.main.BASE_PAGE_TITLE} />
-				</header>
-				<div id="main" className="container" style={{ paddingTop: this.state.headerHeight }}>
+				<Header visible={this.props.header} root={this} title={this.props.main.BASE_PAGE_TITLE} />
+				<div id="main" className="container" style={{ paddingTop: this.state.headerHeight, minHeight: this.state.windowHeight - this.state.footerHeight }}>
 					<main>
 						<this.props.main root={this} />
 					</main>
-					<footer>
-						<Footer visible={this.props.footer} root={this} />
-					</footer>
 				</div>
+				<Footer visible={this.props.footer} root={this} />
 			</>
 		);
 	}
@@ -35,6 +33,10 @@ export default class App extends React.Component<AppProps, AppState> {
 	static renderApp(main: AppProps['main'], id: string = 'root') {
 		const isFrame = main.isFrameVisible();
 		render(<this main={main} header={isFrame.header} footer={isFrame.footer} />, document.getElementById(id));
+	}
+
+	componentDidMount() {
+		this.setState({ windowHeight: window.innerHeight });
 	}
 }
 
@@ -45,5 +47,7 @@ export type AppProps = {
 };
 
 export type AppState = {
+	windowHeight: number,
 	headerHeight: number,
+	footerHeight: number,
 };

@@ -26,7 +26,7 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 
 	render() {
 		return this.props.visible ? (
-			<div className={this.props.topbarClass!}>
+			<header id="header" className={this.props.topbarClass!}>
 				<div className="mdc-top-app-bar__row">
 					<section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
 						<button
@@ -40,9 +40,9 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 					</section>
 				</div>
 				{this.renderMenu()}
-			</div>
+			</header>
 		) : (
-			<React.Fragment />
+			<header />
 		);
 	}
 
