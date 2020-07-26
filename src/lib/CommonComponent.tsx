@@ -3,7 +3,7 @@ import App from './App';
 
 export default class CommonComponent<P extends CommonComponentProps = CommonComponentProps> extends React.Component<P> {
 	static readonly BASE_PAGE_TITLE: string = 'Birthday Message Page';
-	static readonly isFrame?: isFrameVisible;
+	static readonly isFrame: isFrameVisible;
 
 	constructor(props: P) {
 		super(props);
@@ -32,13 +32,27 @@ export default class CommonComponent<P extends CommonComponentProps = CommonComp
 
 	static isFrameVisible() {
 		return {
-			header: this.isFrame == undefined ? true : (typeof this.isFrame == 'boolean' ? this.isFrame : (this.isFrame.header == undefined ? true : this.isFrame.header)),
-			footer: this.isFrame == undefined ? true : (typeof this.isFrame == 'boolean' ? this.isFrame : (this.isFrame.footer == undefined ? true : this.isFrame.footer)),
+			header: this.isFrameByType('header'),
+			footer: this.isFrameByType('footer'),
 		};
+	}
+
+	protected static isFrameByType(type: 'header' | 'footer') {
+		if(this.isFrame == undefined) {
+			return true;
+		} else if(typeof this.isFrame == 'boolean') {
+			return this.isFrame;
+		} else if(this.isFrame[type] == undefined) {
+			return true;
+		} else if(typeof this.isFrame[type] == 'boolean') {
+			return this.isFrame[type] as boolean;
+		} else {
+			return true;
+		}
 	}
 }
 
-export type isFrameVisible = boolean | { header?: boolean, footer?: boolean };
+export type isFrameVisible = boolean | { header?: boolean, footer?: boolean } | undefined;
 
 export type CommonComponentProps = {
 	root: App,
