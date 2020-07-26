@@ -14,14 +14,15 @@ export default class CommonComponent<P extends CommonComponentProps = CommonComp
 	}
 
 	setTitle(title?: string, isSiteName: boolean = true) {
+		const baseTitle = (this.constructor as typeof CommonComponent).BASE_PAGE_TITLE;
 		if(title) {
 			if(isSiteName) {
-				document.title = `${title} | ${CommonComponent.BASE_PAGE_TITLE}`;
+				document.title = `${title} | ${baseTitle}`;
 			} else {
 				document.title = title;
 			}
 		} else {
-			document.title = CommonComponent.BASE_PAGE_TITLE;
+			document.title = baseTitle;
 		}
 	}
 
