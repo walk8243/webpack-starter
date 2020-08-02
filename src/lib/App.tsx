@@ -7,6 +7,9 @@ import Footer from '../part/Footer';
 import '../sass/style.scss';
 
 export default class App extends React.Component<AppProps, AppState> {
+	private headerRef: React.RefObject<Header>;
+	private footerRef: React.RefObject<Footer>;
+
 	constructor(props: AppProps) {
 		super(props);
 		this.state = {
@@ -14,18 +17,21 @@ export default class App extends React.Component<AppProps, AppState> {
 			headerHeight: 0,
 			footerHeight: 0,
 		};
+
+		this.headerRef = React.createRef<Header>();
+		this.footerRef = React.createRef<Footer>();
 	}
 
 	render() {
 		return (
 			<>
-				<Header visible={this.props.header} root={this} title={this.props.main.BASE_PAGE_TITLE} />
+				<Header visible={this.props.header} title={this.props.main.BASE_PAGE_TITLE} ref={this.headerRef} />
 				<div id="main" className="container" style={{ paddingTop: this.state.headerHeight, minHeight: this.state.windowHeight - this.state.footerHeight }}>
 					<main>
 						<this.props.main root={this} />
 					</main>
 				</div>
-				<Footer visible={this.props.footer} root={this} />
+				<Footer visible={this.props.footer} ref={this.footerRef} />
 			</>
 		);
 	}
@@ -36,7 +42,11 @@ export default class App extends React.Component<AppProps, AppState> {
 	}
 
 	componentDidMount() {
-		this.setState({ windowHeight: window.innerHeight });
+		this.setState({
+			windowHeight: window.innerHeight,
+			headerHeight: this.headerRef.current?.getHeaderHeight() ?? this.state.headerHeight,
+			footerHeight: this.footerRef.current?.getHeaderHeight() ?? this.state.footerHeight,
+		});
 	}
 }
 

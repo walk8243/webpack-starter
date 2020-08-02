@@ -1,7 +1,6 @@
 import React from 'react';
 import { MDCTopAppBar } from '@material/top-app-bar';
 import { MDCMenu } from '@material/menu';
-import App from '../lib/App';
 
 import '../sass/header.scss';
 
@@ -67,10 +66,9 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 
 	componentDidMount() {
 		if(!this.props.visible) return;
-		this.header = new MDCTopAppBar(document.querySelector(`.${this.props.topbarClass!}`)!);
+		this.header = new MDCTopAppBar(document.getElementById('header')!);
 		this.menu = new MDCMenu(document.querySelector('.mdc-menu')!);
 		this.menu.setAbsolutePosition(0, this.getHeaderHeight());
-		this.props.root.setState({ headerHeight: this.getHeaderHeight() });
 	}
 
 	getHeaderHeight() {
@@ -84,7 +82,6 @@ export default class Header extends React.Component<HeaderProps, HeaderState> {
 
 export type HeaderProps = {
 	visible: boolean,
-	root: App,
 	topbarClass?: string,
 	title?: string,
 };

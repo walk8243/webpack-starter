@@ -1,5 +1,4 @@
 import React from 'react';
-import App from '../lib/App';
 
 import '../sass/footer.scss';
 
@@ -25,7 +24,6 @@ export default class Footer extends React.Component<FooterProps> {
 
 	componentDidMount() {
 		this.footer = document.getElementById('footer');
-		this.props.root.setState({ footerHeight: this.getHeaderHeight() });
 	}
 
 	getHeaderHeight() {
@@ -39,5 +37,4 @@ export default class Footer extends React.Component<FooterProps> {
 
 export type FooterProps = {
 	visible: boolean,
-	root: App,
 };
