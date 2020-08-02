@@ -1,6 +1,9 @@
 import React from 'react';
+import { MDCMenu } from '@material/menu';
 
 export default class Menu extends React.Component<MenuProps, MenuState> {
+	private menu: MDCMenu | null = null;
+
 	constructor(props: MenuProps) {
 		super(props);
 	}
@@ -17,6 +20,18 @@ export default class Menu extends React.Component<MenuProps, MenuState> {
 				</nav>
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.menu = new MDCMenu(document.querySelector('.mdc-menu')!);
+	}
+
+	openMenu() {
+		if(this.menu) this.menu.open = true;
+	}
+
+	setPosition(x: number, y: number) {
+		this.menu?.setAbsolutePosition(x, y);
 	}
 }
 
